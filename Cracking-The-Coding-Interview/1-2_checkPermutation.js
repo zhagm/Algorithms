@@ -13,9 +13,9 @@ function checkPermutation(s1, s2) {
     const char = s1[i];
     dict[char] = dict[char] ? dict[char] + 1 : 1;
   }
-  
+
   for (let j = 0; j < s2.length; j++) {
-    const char = s1[j];
+    const char = s2[j];
     if (dict[char]) {
       dict[char]--;
     }
@@ -25,8 +25,15 @@ function checkPermutation(s1, s2) {
   return true;
 }
 
-// console.log("isUnique('hello'):", isUnique('hello'));
-// // false
+console.log("checkPermutation('cab', 'abc'):", checkPermutation('cab', 'abc'), '(true)');
+// true
+
+console.log("checkPermutation('cab', 'back'):", checkPermutation('cab', 'back'), '(false)');
+// false
+
+console.log("checkPermutation('cab', 'car'):", checkPermutation('cab', 'car'), '(false)');
+// false
+
 
 /*
 Pseudocode:
