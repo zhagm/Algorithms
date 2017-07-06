@@ -11,20 +11,27 @@ function zeroMatrix(m) {
     for (let y = 0; y < m[0].length; y++) {
       if (m[x][y] === 0) {
         if (row.indexOf(x) === -1) row.push(x);
+        if (col.indexOf(y) === -1) col.push(y);
       }
     }
   }
   for (let x = 0; x < m.length; x++) {
     for (let y = 0; y < m[0].length; y++) {
-
+      if (row.indexOf(x) !== -1 || col.indexOf(y) !== -1)
+        m[x][y] = 0;
     }
   }
-  console.log(row);
   return m;
 }
 
-console.log("zeroMatrix('test'):", zeroMatrix([[1,1,1,0],[1,1,1,1],[1,1,1,1],[0,1,1,1]]));
-// answer
+console.log("zeroMatrix('test'):", zeroMatrix([[1,1,1,0],[1,1,1,1],[1,1,1,1],[1,0,1,1]]));
+/*
+// [ [ 0, 0, 0, 0 ], [ 1, 0, 1, 0 ], [ 1, 0, 1, 0 ], [ 0, 0, 0, 0 ] ]
+[ 1, 1, 1, 0 ]       [ 0, 0, 0, 0 ]
+[ 1, 1, 1, 1 ]  -->  [ 1, 0, 1, 0 ]
+[ 1, 1, 1, 1 ]       [ 1, 0, 1, 0 ]
+[ 1, 0, 1, 1 ]       [ 0, 0, 0, 0 ]
+*/
 
 /*
 Pseudocode:
