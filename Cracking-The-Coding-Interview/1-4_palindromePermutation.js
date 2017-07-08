@@ -7,12 +7,33 @@
 // (Permutation - rearrangement of letters)
 
 function palindromePermutation(str) {
-  return str;
+  str = str.toLowerCase();
+  let single = 0;
+  let obj = {};
+  for (let i = 0; i < str.length; i++) {
+    let c = str[i];
+    if ((/\w/).test(c)) {
+      obj[c] = (obj[c] ? obj[c] + 1 : 1);
+    }
+  }
+  for (let key in obj) {
+    if (obj[key]%2 === 1) {
+      single++;
+    }
+    if (single > 1) return false;
+  }
+  return true;
 }
 
 
 console.log("palindromePermutation('Tact Coa'):", palindromePermutation('Tact Coa'));
 // true
+
+console.log("palindromePermutation('aabbc'):", palindromePermutation('aabbc'));
+// true
+
+console.log("palindromePermutation('hello'):", palindromePermutation('hello'));
+// false
 
 /*
 Pseudocode:
