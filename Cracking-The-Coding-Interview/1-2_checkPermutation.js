@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let instead of var (ES6)
-
 // Instructions:
 // Take input of 2 strs, check if one is a permutation of the other
 

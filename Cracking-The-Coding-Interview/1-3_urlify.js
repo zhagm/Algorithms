@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let/const instead of var (ES6)
-
 // Instructions:
 // Take a string, replace all spaces with %20 unless front or back of str
 

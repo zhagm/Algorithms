@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let/const instead of var (ES6)
-
 // Instructions:
 // ...
 

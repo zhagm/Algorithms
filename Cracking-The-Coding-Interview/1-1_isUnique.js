@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let instead of var (ES6)
-
 // Instructions:
 // Take input of string, check if all characters are unique
 // If unique, return true, else return false

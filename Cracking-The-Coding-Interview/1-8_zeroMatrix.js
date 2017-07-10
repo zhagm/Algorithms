@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let instead of var (ES6)
-
 // Instructions:
 // If an element in the MxM is 0, the entire row and column become 0's
 

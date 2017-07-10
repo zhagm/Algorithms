@@ -1,6 +1,3 @@
-"use strict";
-// to allow use of let/const instead of var (ES6)
-
 // Instructions:
 // Given a string, write a function to check if it is a perumation of a palindrome.
 // (Palindrome - word that's the same backwards and forwards)
