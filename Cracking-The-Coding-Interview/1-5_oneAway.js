@@ -6,8 +6,29 @@
 // character, remove a character, or replace a character. Given two strings,
 // write a function to check if they are one edit (or zero edits) away.
 
-function oneAway(str1, str2) {
-  return str1;
+const oneAway = (str1, str2) => {
+  if (str1 === str2) return true;
+  else if (str1.length === str2.length) {
+    let diffCount = 0;
+    for (let i = 0; i < str1.length; i++) {
+      if (str1[i] !== str2[i]) diffCount++;
+    }
+    return (diffCount === 1);
+  }
+  else if (Math.abs(str1.length - str2.length) === 1) {
+    let long = str1.length > str2.length ? str1 : str2;
+    let short = str1.length < str2.length ? str1 : str2;
+
+    for (let i = 0; i < long.length; i++) {
+      if (long[i] !== short[i]) {
+        short = short.substr(0, i) + long[i] + short.substr(i);
+        return (short === long);
+      }
+    }
+  }
+  else {
+    return false;
+  }
 }
 
 console.log(oneAway('ple', 'pale'));
