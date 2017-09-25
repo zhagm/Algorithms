@@ -10,7 +10,6 @@ function SinglyList() {
 
 SinglyList.prototype.add = function(value) {
   let node = new Node(value);
-  console.log(node);
   currentNode = this.head;
 
   // Use case #1: empty list
