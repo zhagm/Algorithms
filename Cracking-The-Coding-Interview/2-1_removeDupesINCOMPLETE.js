@@ -36,6 +36,18 @@ SinglyList.prototype.add = function(value) {
   return node;
 }
 
+function printNodes(linkedList) {
+  let length = linkedList._length;
+  currentNode = linkedList.head;
+  count = 0;
+  while (count < length) {
+    console.log(count, currentNode.data);
+    currentNode = currentNode.next;
+    count++;
+  }
+  return linkedList;
+}
+
 function removeDupes(linkedList) {
   let length = linkedList._length;
 
@@ -53,26 +65,31 @@ function removeDupes(linkedList) {
     count++;
   }
 
-  // second loop
+  // second loop, deleting dupes
   currentNode = linkedList.head;
+  prevNode = null;
+  nodeToDelete = null;
   count = 0;
   while (count < length) {
     if (dict[currentNode.data] > 1) {
-      dict[currentNode.data]--;
-      currentNode.data = 'CONSIDER DELETED';
-      console.log(currentNode.data);
+      if (count === 0) { // if position of dupe is head of linked list
+        linkedList.head = currentNode.next;
+        nodeToDelete = currentNode;
+        dict[nodeToDelete.data]--;
+      } else { // if position of dupe isn't head of linked list
+        nodeToDelete = currentNode;
+        currentNode = nodeToDelete.next;
+        prevNode.next = nodeToDelete.next;
+        dict[nodeToDelete.data]--;
+      }
+      linkedList._length--;
+      length--;
+    } else {
+      count++;
+      prevNode = currentNode;
+      currentNode = currentNode.next;
     }
-    currentNode = currentNode.next;
-    count++;
-  }
-
-  // third loop (delete, just for viewing nodes)
-  currentNode = linkedList.head;
-  count = 0;
-  while (count < length) {
-    console.log(count, " :", currentNode.data);
-    currentNode = currentNode.next;
-    count++;
+    nodeToDelete = null;
   }
 
   return linkedList;
@@ -87,19 +104,19 @@ test1.add('three');
 test1.add('four');
 test1.add('four');
 let test2 = new SinglyList();
+test2.add('ush');
 test2.add('bir');
+test2.add('tort');
+test2.add('tort');
 test2.add('yeki');
 test2.add('ush');
 test2.add('tort');
 test2.add('bes');
-test2.add('tort');
-test2.add('tort');
-test2.add('ush');
 test2.add('bes');
 
-console.log("removeDupes(test1):", removeDupes(test1));
+console.log("removeDupes(test1):", printNodes(removeDupes(test1)));
 // length should be 4
-// console.log("removeDupes(test2):", removeDupes(test2));
+console.log("removeDupes(test2):", printNodes(removeDupes(test2)));
 // // length should be 5
 
 /*
