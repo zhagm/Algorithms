@@ -37,7 +37,20 @@ SinglyList.prototype.add = function(value) {
 }
 
 function removeDupes(linkedList) {
-
+  let dict = {};
+  let currentNode = linkedList.head;
+  let length = linkedList._length;
+  let count = 0;
+  while (count < length) {
+    if (dict[currentNode.data]) {
+      dict[currentNode.data]++;
+    } else {
+      dict[currentNode.data] = 1;
+    }
+    currentNode = currentNode.next;
+    count++;
+  }
+  return dict;
 }
 
 
@@ -49,20 +62,20 @@ test1.add('three');
 test1.add('four');
 test1.add('four');
 let test2 = new SinglyList();
-test1.add('bir');
-test1.add('yeki');
-test1.add('ush');
-test1.add('tort');
-test1.add('bes');
-test1.add('tort');
-test1.add('tort');
-test1.add('ush');
-test1.add('bes');
+test2.add('bir');
+test2.add('yeki');
+test2.add('ush');
+test2.add('tort');
+test2.add('bes');
+test2.add('tort');
+test2.add('tort');
+test2.add('ush');
+test2.add('bes');
 
 console.log("removeDupes(test1):", removeDupes(test1));
 // length should be 4
-console.log("removeDupes(test2):", removeDupes(test2));
-// length should be 5
+// console.log("removeDupes(test2):", removeDupes(test2));
+// // length should be 5
 
 /*
 Pseudocode:
