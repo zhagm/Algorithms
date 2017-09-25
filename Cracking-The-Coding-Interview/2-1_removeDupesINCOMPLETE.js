@@ -37,9 +37,11 @@ SinglyList.prototype.add = function(value) {
 }
 
 function removeDupes(linkedList) {
-  let dict = {};
-  let currentNode = linkedList.head;
   let length = linkedList._length;
+
+  // first loop, creating dict
+  let currentNode = linkedList.head;
+  let dict = {};
   let count = 0;
   while (count < length) {
     if (dict[currentNode.data]) {
@@ -50,7 +52,30 @@ function removeDupes(linkedList) {
     currentNode = currentNode.next;
     count++;
   }
-  return dict;
+
+  // second loop
+  currentNode = linkedList.head;
+  count = 0;
+  while (count < length) {
+    if (dict[currentNode.data] > 1) {
+      dict[currentNode.data]--;
+      currentNode.data = 'CONSIDER DELETED';
+      console.log(currentNode.data);
+    }
+    currentNode = currentNode.next;
+    count++;
+  }
+
+  // third loop (delete, just for viewing nodes)
+  currentNode = linkedList.head;
+  count = 0;
+  while (count < length) {
+    console.log(count, " :", currentNode.data);
+    currentNode = currentNode.next;
+    count++;
+  }
+
+  return linkedList;
 }
 
 
@@ -81,9 +106,8 @@ console.log("removeDupes(test1):", removeDupes(test1));
 Pseudocode:
 // loop through once, creating dictionary of node data
 // where { dataVal: count }
-// loop through obj, check if count > 1, add to array of dupes
 // loop through linked list second time
-// this time check if currentNode's data is in the dupes array
+// this time check if currentNode's count is higher than 1 in dict
 // if true, delete node, else continue
 // return linked list
 // FOLLOW UP:
