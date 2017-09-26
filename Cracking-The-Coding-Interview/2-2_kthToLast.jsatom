@@ -1,0 +1,17 @@
+// Instructions:
+// Implement an algorithm to find the kth to last element of a singly linked list
+
+function func(x) {
+  return x;
+}
+
+console.log("func('test'):", func('test'));
+// answer
+
+/*
+Pseudocode:
+// Use case #1: check if (k > l || l === 0) throw Error
+// Use case #2: (everything else), have 2 runners, A is at x, B is
+// always at x + k, until x + k reaches a node where the next val is null,
+// in which case you return A
+*/
