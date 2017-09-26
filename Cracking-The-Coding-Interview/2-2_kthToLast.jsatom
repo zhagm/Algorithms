@@ -34,6 +34,9 @@ SinglyList.prototype.add = function(value) {
 }
 
 function returnKthToLast(linkedList, k) {
+  if (k > linkedList._length || linkedList._length === 0) {
+    throw new Error("Node does not exist");
+  }
   let A = linkedList.head;
   let B = linkedList.head;
   let count = k;
@@ -55,6 +58,22 @@ test1.add('return me');
 test1.add('error');
 console.log("returnKthToLast(test1):", returnKthToLast(test1, 2));
 // should return 'return me'
+
+let test2 = new SinglyList();
+test2.add('*');
+test2.add('&');
+test2.add('hello');
+test2.add('#');
+test2.add('%');
+console.log("returnKthToLast(test2):", returnKthToLast(test2, 3));
+// should return 'hello'
+
+let test3 = new SinglyList();
+test3.add('hello');
+test3.add('#');
+test3.add('%');
+console.log("returnKthToLast(test3):", returnKthToLast(test3, 4));
+// should return 'hello'
 
 /*
 Pseudocode:
