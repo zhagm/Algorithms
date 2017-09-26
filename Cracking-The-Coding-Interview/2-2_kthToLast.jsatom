@@ -34,9 +34,17 @@ SinglyList.prototype.add = function(value) {
 }
 
 function returnKthToLast(linkedList, k) {
-  let A, B;
-  
-  return linkedList;
+  let A = linkedList.head;
+  let B = linkedList.head;
+  let count = k;
+  while (--k) {
+    B = B.next;
+  }
+  while (B.next) {
+    A = A.next;
+    B = B.next;
+  }
+  return A;
 }
 
 
