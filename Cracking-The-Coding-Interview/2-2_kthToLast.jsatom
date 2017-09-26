@@ -1,12 +1,52 @@
 // Instructions:
 // Implement an algorithm to find the kth to last element of a singly linked list
 
-function func(x) {
-  return x;
+// Linked List creation and functions
+function Node(data) {
+  this.data = data;
+  this.next = null;
 }
 
-console.log("func('test'):", func('test'));
-// answer
+function SinglyList() {
+  this.head = null;
+  this._length = 0;
+}
+
+SinglyList.prototype.add = function(value) {
+  let node = new Node(value);
+  currentNode = this.head;
+
+  // Use case #1: empty list
+  if (!currentNode) {
+    this.head = node;
+    this._length++;
+    return node;
+  }
+
+  // Use case #2: non-empty list
+  while (currentNode.next) {
+    currentNode = currentNode.next;
+  }
+
+  currentNode.next = node;
+  this._length++;
+  return node;
+}
+
+function returnKthToLast(linkedList, k) {
+  let A, B;
+  
+  return linkedList;
+}
+
+
+let test1 = new SinglyList();
+test1.add('wrong');
+test1.add('incorrect');
+test1.add('return me');
+test1.add('error');
+console.log("returnKthToLast(test1):", returnKthToLast(test1, 2));
+// should return 'return me'
 
 /*
 Pseudocode:
