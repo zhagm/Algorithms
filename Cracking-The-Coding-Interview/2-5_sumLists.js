@@ -59,7 +59,7 @@ num2.add(0);
 num2.add(2);
 num2.add(2);
 console.log("sumLists(num1, num2):", sumLists(num1, num2));
-// answer
+// answer return 2310
 
 /*
 Pseudocode:
