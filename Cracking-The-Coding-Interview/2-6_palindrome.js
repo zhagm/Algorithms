@@ -34,8 +34,26 @@ SinglyList.prototype.add = function(value) {
 }
 
 function palindrome(x) {
+  let l = x._length;
+  let currentNode = x.head;
+  let count = 0;
   let temp = [];
-  return x;
+  while (count < l/2) {
+    temp.push(currentNode.data);
+    currentNode = currentNode.next;
+    count++;
+  }
+  if (l%2 === 1) {
+    temp.pop();
+  }
+  while (count < l) {
+    if (currentNode.data !== temp.pop()) {
+      return false;
+    }
+    currentNode = currentNode.next;
+    count++;
+  }
+  return true;
 }
 
 
