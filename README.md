@@ -2,7 +2,7 @@
 ###### Using Cracking the Coding Interview, Leetcode, and More
 
 ### Goals
-* Practice algorithms every day *(current streak: 0)*
+* Practice algorithms every day *(current streak: 1)*
 * Learn more about data structures
 * Improve analysis of complexities (both time and space)
 * Understand what goes on behind the scenes (ex. what algorithm the Array sort method uses)
