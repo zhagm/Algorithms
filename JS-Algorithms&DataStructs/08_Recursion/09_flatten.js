@@ -3,7 +3,13 @@
 // and return s a new array with all values flattened.
 
 function flatten(arr) {
-  if (!arr.length) return [];
+  let res = [];
+  if (!arr.length) return res;
+  return arr.reduce((res, val) => {
+    if (Array.isArray(val)) res.push(...flatten(val));
+    else res.push(val);
+    return res;
+  }, []);
 }
 
 console.log("flatten([1, 2, 3, [4, 5] ]):", flatten([1, 2, 3, [4, 5]]));
