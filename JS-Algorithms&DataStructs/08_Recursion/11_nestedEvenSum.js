@@ -4,12 +4,9 @@
 
 function nestedEvenSum(x) {
   if (typeof x === "number") return x % 2 ? 0 : x;
-  else if (typeof x !== "object" || Array.isArray(x)) return 0;
+  if (typeof x !== "object" || Array.isArray(x)) return 0;
   return Object.keys(x).reduce((sum, key) => {
-    let val = x[key];
-    if (typeof val === "object") sum += nestedEvenSum(val);
-    else if (typeof val === "number" && val % 2 === 0) sum += val;
-    return sum;
+    return sum + nestedEvenSum(x[key]);
   }, 0);
 }
 
