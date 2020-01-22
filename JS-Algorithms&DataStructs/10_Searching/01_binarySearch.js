@@ -1,19 +1,26 @@
 let binarySearch = (sortedArr, val) => {
-  let start = 0;
-  let end = sortedArr.length - 1;
+  let start = 0,
+    end = sortedArr.length - 1;
   do {
-    let i = Math.floor((end - start) / 2) + start;
-    if (sortedArr[i] === val) return i;
-    else if (sortedArr[i] > val) end = i;
-    else if (sortedArr[i] < val) start = i;
-    if (end - start <= 1) {
-      if (sortedArr[start] === val) return start;
-      else if (sortedArr[end] === val) return end;
-      return -1;
-    }
-  } while (start !== end);
+    let mid = Math.floor((end - start) / 2) + start;
+    if (sortedArr[mid] === val) return mid;
+    else if (sortedArr[mid] > val) end = mid - 1;
+    else start = mid + 1;
+  } while (start < end);
   return -1;
 };
+
+// function binarySearch(arr, n) {
+//   let start = 0,
+//     end = arr.length - 1;
+//   let mid = Math.floor((start + end) / 2);
+//   while (arr[mid] !== n && start <= end) {
+//     if (arr[mid] > n) end = mid - 1;
+//     else if (arr[mid] < n) start = mid + 1;
+//     mid = Math.floor((start + end) / 2);
+//   }
+//   return arr[mid] === n ? mid : -1;
+// }
 
 let testArr = [1, 2, 4, 5, 7];
 console.log("binarySearch(testArr, 5):", binarySearch(testArr, 5));
