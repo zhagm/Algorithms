@@ -51,14 +51,12 @@ class VillageState {
 
   move(destination) {
     if (!roadGraph[this.place].includes(destination)) return this;
-    let newPlace = destination;
     let newParcels = [];
     for (let parcel of this.parcels) {
-      let newParcel = { ...parcel };
-      newParcel.place = destination;
-      if (newParcel.address !== destination) parcels.push(newParcel);
+      if (parcel.address !== destination)
+        parcels.push({ ...parcel, place: destination });
     }
-    return new VillageState(newPlace, newParcels);
+    return new VillageState(destination, newParcels);
   }
 }
 
