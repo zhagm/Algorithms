@@ -15,6 +15,22 @@ const roads = [
   "Shop-Town Hall"
 ];
 
+const mailRoute = [
+  "Alice's House",
+  "Cabin",
+  "Alice's House",
+  "Bob's House",
+  "Town Hall",
+  "Daria's House",
+  "Ernie's House",
+  "Grete's House",
+  "Shop",
+  "Grete's House",
+  "Farm",
+  "Marketplace",
+  "Post Office"
+];
+
 function buildGraph(edges) {
   return edges.reduce((graph, str) => {
     let [key, valItem] = str.split("-");
@@ -58,6 +74,50 @@ function runRobot(state, robot, memory) {
   }
 }
 
+function runRobotTester(state, robot, memory) {
+  let turn = 0;
+  while (++turn) {
+    if (state.parcels.length == 0) {
+      return turn;
+    }
+    let action = robot(state, memory);
+    state = state.move(action.direction);
+    memory = action.memory;
+  }
+}
+
+function routeRobot(state, memory) {
+  if (!memory || memory.length == 0) {
+    memory = mailRoute;
+  }
+  return { direction: memory[0], memory: memory.slice(1) };
+}
+
+function goalOrientedRobot({ place, parcels }, route) {
+  if (route.length == 0) {
+    let parcel = parcels[0];
+    if (parcel.place != place) {
+      route = findRoute(roadGraph, place, parcel.place);
+    } else {
+      route = findRoute(roadGraph, place, parcel.address);
+    }
+  }
+  return { direction: route[0], memory: route.slice(1) };
+}
+
+function findRoute(graph, from, to) {
+  let work = [{ at: from, route: [] }];
+  for (let i = 0; i < work.length; i++) {
+    let { at, route } = work[i];
+    for (let place of graph[at]) {
+      if (place == to) return route.concat(place);
+      if (!work.some(w => w.at == place)) {
+        work.push({ at: place, route: route.concat(place) });
+      }
+    }
+  }
+}
+
 // Random picker and generators for testing
 function randomPick(array) {
   let choice = Math.floor(Math.random() * array.length);
@@ -83,4 +143,28 @@ VillageState.random = function(parcelCount = 5) {
 
 const roadGraph = buildGraph(roads);
 let testVillageState = VillageState.random();
-runRobot(testVillageState, randomRobot);
+runRobot(testVillageState, goalOrientedRobot, []);
+runRobot(testVillageState, routeRobot);
+runRobot(testVillageState, randomRobot, []);
+
+// Exercises:
+
+// 1. Measuring a robot
+function compareRobots(robot1, memory1, robot2, memory2) {
+  // takes two robots, generates 100 tasks and lets each robot solve it, outputs average # of steps each robot took per task
+  let robot1Total = 0,
+    robot2Total = 0;
+  for (let i = 0; i < 100; i++) {
+    let task = VillageState.random();
+    robot1Total += runRobotTester(task, robot1, []);
+    robot2Total += runRobotTester(task, robot2, []);
+  }
+  return {
+    robot1: Math.floor(robot1Total / 100),
+    robot2: Math.floor(robot2Total / 100)
+  };
+}
+console.log(
+  "compareRobots(routeRobot, [], goalOrientedRobot, [])",
+  compareRobots(routeRobot, [], goalOrientedRobot, [])
+);
