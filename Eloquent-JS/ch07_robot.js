@@ -168,3 +168,5 @@ console.log(
   "compareRobots(routeRobot, [], goalOrientedRobot, [])",
   compareRobots(routeRobot, [], goalOrientedRobot, [])
 );
+
+// Two more exercises left...
