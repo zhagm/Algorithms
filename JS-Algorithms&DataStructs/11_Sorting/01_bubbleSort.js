@@ -1,8 +1,19 @@
 // Instructions:
 // ...
 
-function bubbleSort(x) {
-  return;
+function bubbleSort(arr) {
+  let swapCount;
+  do {
+    swapCount = 0;
+    for (let i = 0; i < arr.length - 1; i++) {
+      let j = i + 1;
+      if (arr[i] > arr[j]) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        swapCount++;
+      }
+    }
+  } while (swapCount !== 0);
+  return arr;
 }
 
 console.log("bubbleSort([5, 4, 3, 2, 1]):", bubbleSort([5, 4, 3, 2, 1]));
