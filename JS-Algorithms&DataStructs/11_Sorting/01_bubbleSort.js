@@ -1,6 +1,3 @@
-// Instructions:
-// ...
-
 function bubbleSort(arr) {
   let swapCount;
   do {
@@ -27,4 +24,13 @@ Pseudocode:
 * loop through, while (counter is not equal to array length)
 * everytime a swap occurs, decrement counter
 * compare index 0 and index 1, swap if 0 is bigger
+*/
+
+/*
+ABOUT BUBBLE SORT
+* COMPLEXITY: O(n^2) - worst case
+* Best to use for data that's almost fully sorted
+* Good for really small data sets
+* Good for practicing sorting as implementation and conceptualization is easy
+* Simple and readable code
 */
