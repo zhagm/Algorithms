@@ -27,7 +27,8 @@ Pseudocode:
 */
 
 /*
-ABOUT BUBBLE SORT
+ABOUT BUBBLE SORT:
+* Sort where largest values bubble to the end - comparing two items at a time and moving larger one to the left until the whole thing is sorted
 * COMPLEXITY: O(n^2) - worst case
 * Best to use for data that's almost fully sorted
 * Good for really small data sets
