@@ -1,8 +1,20 @@
 // Instructions:
 // ...
 
-function selectionSort(x) {
-  return x;
+function selectionSort(arr) {
+  let smallestIndex;
+  for (let i = 0; i < arr.length - 1; i++) {
+    let smallestIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[smallestIndex]) smallestIndex = j;
+    }
+    if (smallestIndex !== i) {
+      let hold = arr[i];
+      arr[i] = arr[smallestIndex];
+      arr[smallestIndex] = hold;
+    }
+  }
+  return arr;
 }
 
 console.log("selectionSort([5, 4, 3, 2, 1]):", selectionSort([5, 4, 3, 2, 1]));
