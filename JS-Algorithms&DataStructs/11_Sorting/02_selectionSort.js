@@ -32,5 +32,6 @@ Pseudocode:
 
 /*
 ABOUT SELECTION SORT:
-* 
+* Loop through each item in the array and at each one, loop to find smallest item and swapping with current item if smaller
+* O(n^2)
 */
