@@ -1,0 +1,23 @@
+
+ELEMENTARY SORTING ALGORITHMS (OR QUADRATIC - bc their complexities are all O(n^2))
+
+Space complexity is O(1) for all of them.
+
+Time complexities:
+BUBBLE SORT:
+    Best: O(n)
+    Worst: O(n^2)
+    Average: O(n^2)
+
+SELECTION SORT:
+    Best: O(n^2)
+    Worst: O(n^2)
+    Average: O(n^2)
+
+INSERTION SORT:
+    Best: O(n)
+    Worst: O(n^2)
+    Average: O(n^2) 
+
+
+// GO BACK TO THIS: https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/learn/lecture/11071978#overview

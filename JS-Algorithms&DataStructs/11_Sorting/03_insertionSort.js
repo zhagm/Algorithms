@@ -19,6 +19,8 @@ Pseudocode:
 
 /*
 ABOUT SELECTION SORT:
+* O(n^2)
 * Start with the second item in the array and build up a sorted section of the array (from beginning)
 * For each following item, check if it's in the right place and if not insert it into the correct place of the sorted part of the array
+* Insertion sort is good for an ONLINE ALGORITHM - algo that works as data is coming in - insertion is ideal for this
 */
