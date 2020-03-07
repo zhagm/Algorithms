@@ -1,15 +1,9 @@
 function mergeSort(arr) {
-  if (arr.length === 0 || arr.length === 1) return arr;
-  else {
-    if (isSorted(arr)) {
-      return arr;
-    } else {
-      return merge(
-        mergeSort(arr.slice(0, Math.floor(arr.length / 2))),
-        mergeSort(arr.slice(Math.floor(arr.length / 2)))
-      );
-    }
-  }
+  if (isSorted(arr)) return arr;
+  return merge(
+    mergeSort(arr.slice(0, Math.floor(arr.length / 2))),
+    mergeSort(arr.slice(Math.floor(arr.length / 2)))
+  );
 }
 
 function isSorted(arr) {
