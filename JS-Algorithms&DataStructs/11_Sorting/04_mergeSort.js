@@ -1,9 +1,17 @@
+// checks if array is sorted before splitting up further
+// function mergeSort(arr) {
+// if (isSorted(arr)) return arr;
+// return merge(
+//   mergeSort(arr.slice(0, Math.floor(arr.length / 2))),
+//   mergeSort(arr.slice(Math.floor(arr.length / 2)))
+// );
+// }
+
+// classic mergeSort implementation
 function mergeSort(arr) {
-  if (isSorted(arr)) return arr;
-  return merge(
-    mergeSort(arr.slice(0, Math.floor(arr.length / 2))),
-    mergeSort(arr.slice(Math.floor(arr.length / 2)))
-  );
+  if (arr.length <= 1) return arr;
+  let mid = Math.floor(arr.length / 2);
+  return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)));
 }
 
 function isSorted(arr) {
@@ -27,7 +35,7 @@ function merge(arr1, arr2) {
       while (j < arr2.length) res.push(arr2[j++]);
     } else if (arr1[i] <= arr2[j]) {
       res.push(arr1[i++]);
-    } else if (arr2[j] < arr1[i]) {
+    } else {
       res.push(arr2[j++]);
     }
   }
