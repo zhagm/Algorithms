@@ -1,4 +1,4 @@
-// checks if array is sorted before splitting up further
+// checks if array is sorted before splitting up further, optimizes a bit
 // function mergeSort(arr) {
 // if (isSorted(arr)) return arr;
 // return merge(
@@ -55,8 +55,10 @@ Pseudocode:
 
 /*
 ABOUT SELECTION SORT:
+* Space complexity: O(n)
+* Time complexity: O(n log n)
+* Usually time complexity is the bigger concern, but if space is a concern merge sort isn't the best option
 * Combination of three things - splitting up, sorting, and merging
 * Exploits the fact that arrays of length 0 or 1 are sorted
 * Works by decomposing an array into smaller arrays of length 0 or 1 and then slowly building up a new sorted array
-
 */
