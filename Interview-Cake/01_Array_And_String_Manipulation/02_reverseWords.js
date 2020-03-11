@@ -6,7 +6,24 @@
 **/
 
 function reverseWords(arr) {
+    let arrow = 0;
+    let start = 0, end = arr.length - 1;
+    while (arr.slice(start, end).includes(" ")) {
+        while (arr[end] !== " ") {
+            moveLastToIndex(arr, start);
+            arrow++;
+        }
+        moveLastToIndex(arr, arrow);
+        arrow++;
+        start = arrow;
+    }
+    return ;
+}
 
+function moveLastToIndex(arr, index) {
+    // bubble swap from last item until index
+    for (let i = arr.length - 1; i > index; i--)
+        [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
 }
 
 const test1 = [ 'c', 'a', 'k', 'e', ' ', 'p', 'o', 'u', 'n', 'd', ' ', 's', 't', 'e', 'a', 'l' ];
